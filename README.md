@@ -1,0 +1,1 @@
+# tripstick-search-core
