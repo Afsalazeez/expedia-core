@@ -1,0 +1,15 @@
+flask 
+flask-smorest
+python-dotenv
+requests
+pymysql
+sqlalchemy
+flask_sqlalchemy
+flask-migrate
+passlib
+redis
+celery
+flask-mail
+flask-celery-helper
+gunicorn
+psycopg2
