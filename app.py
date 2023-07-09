@@ -2,18 +2,19 @@ import os
 
 from flask import Flask
 from flask_smorest import Api
-from flask_migrate import Migrate
+# from flask_migrate import Migrate
 
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-from db import db
-import models
+# from db import db
+# import models
 
-from resources.user import blp as UserBluePrint
+# from resources.user import blp as UserBluePrint
+from resources.availability import blp as AvailabilityBluePrint
 
 def create_app(db_url=None):
     app = Flask(__name__)
-    load_dotenv()
+    # load_dotenv()
 
     app.config["PROPAGATE_EXCEPTIONS"] = True
     app.config["API_TITLE"] = "Tripstick API"
@@ -22,15 +23,15 @@ def create_app(db_url=None):
     app.config["OPENAPI_URL_PREFIX"] = "/"
     app.config["OPENAPI_SWAGGER_UI_PATH"] = "/swagger-ui"
     app.config["OPENAPI_SWAGGER_UI_URL"] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
-    app.config['SQLALCHEMY_DATABASE_URI'] = db_url or os.getenv(
-        "SQLALCHEMY_DATABASE_URI")
+    # app.config['SQLALCHEMY_DATABASE_URI'] = db_url or os.getenv(
+    #     "SQLALCHEMY_DATABASE_URI")
 
 
-    db.init_app(app)
-    migrate = Migrate(app, db)
+    # db.init_app(app)
+    # migrate = Migrate(app, db)
     api = Api(app)
 
-    api.register_blueprint(UserBluePrint)
+    api.register_blueprint(AvailabilityBluePrint)
 
     return app
 
